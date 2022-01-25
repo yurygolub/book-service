@@ -10,7 +10,7 @@ namespace BookServiceTask
     /// </summary>
     public class BookService
     {
-        private HashSet<Book> books;
+        private readonly HashSet<Book> books;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="BookService"/> class.
@@ -161,9 +161,14 @@ namespace BookServiceTask
             /// <returns>true if books are equal; otherwise, false.</returns>
             public bool Equals(Book x, Book y)
             {
-                if (x is null || y is null)
+                if (x is null)
                 {
-                    object.Equals(x, y);
+                    throw new ArgumentNullException(nameof(x));
+                }
+
+                if (y is null)
+                {
+                    throw new ArgumentNullException(nameof(y));
                 }
 
                 return string.Equals(x.ISBN, y.ISBN, StringComparison.InvariantCulture) &&

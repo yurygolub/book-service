@@ -10,7 +10,7 @@ namespace BookStorages
     /// </summary>
     public class Storage : IStorage<Book>
     {
-        private List<Book> books;
+        private readonly List<Book> books;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Storage"/> class.
