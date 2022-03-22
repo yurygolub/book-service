@@ -124,7 +124,15 @@ namespace BookClass
         /// <param name="left">Left operand.</param>
         /// <param name="right">Right operand.</param>
         /// <returns><see langword="true"/> if both operands are equal, <see langword="false"/> otherwise.</returns>
-        public static bool operator ==(Book left, Book right) => !(left is null) && left.Equals(right);
+        public static bool operator ==(Book left, Book right)
+        {
+            if (ReferenceEquals(left, right))
+            {
+                return true;
+            }
+
+            return !(left is null) && left.Equals(right);
+        }
 
         /// <summary>
         /// Inequality operator.
